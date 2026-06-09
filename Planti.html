@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXTINBOGOTÁ FUTURA | Venta y Recarga</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+--salmon-neon: #ff5e3a;
+--salmon-glow: rgba(255, 94, 58, 0.4);
+--fuego-oro: #ffd000;
+--black: #050505;
+--metal-panel: #121216;
+}
+
+body {
+background-color: var(--black);
+color: #fff;
+font-family: 'Orbitron', sans-serif;
+margin: 0;
+overflow-x: hidden;
+}
+
+/* --- FONDO METALIZADO CON MOVIMIENTO LÍQUIDO --- */
+.metal-bg {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+z-index: -3;
+background: 
+    radial-gradient(circle at 50% 50%, rgba(255, 94, 58, 0.04), var(--black)),
+    linear-gradient(30deg, #09090b 25%, #18181c 50%, #09090b 75%);
+background-size: 400% 400%;
+animation: metalShine 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes metalShine {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+/* MOLECULAS EVOLUCIONADAS A COLOR SALMÓN */
+.molecules{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-2;
+}
+
+.molecules span{
+position:absolute;
+width:5px;
+height:5px;
+background: var(--salmon-neon);
+border-radius:50%;
+box-shadow:0 0 12px var(--salmon-neon);
+animation:float 15s linear infinite;
+opacity:.4;
+}
+
+.molecules span:nth-child(1){left:10%; animation-duration: 18s;}
+.molecules span:nth-child(2){left:25%; animation-duration: 12s; animation-delay: 2s;}
+.molecules span:nth-child(3){left:45%; animation-duration: 22s;}
+.molecules span:nth-child(4){left:65%; animation-duration: 14s; animation-delay: 4s;}
+.molecules span:nth-child(5){left:85%; animation-duration: 19s;}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(0.8); opacity: 0;}
+50%{opacity: 0.5;}
+100%{transform:translateY(-100px) scale(1.2); opacity: 0;}
+}
+
+/* HUMO EN COLOR SALMÓN SUTIL */
+.smoke span{
+position:fixed;
+bottom:-200px;
+width:500px;
+height:500px;
+background:rgba(255, 94, 58, 0.04);
+filter:blur(80px);
+border-radius:50%;
+animation:smoke 22s linear infinite;
+z-index:-1;
+}
+
+.smoke span:nth-child(1){left:-5%}
+.smoke span:nth-child(2){left:45%;animation-delay:4s}
+.smoke span:nth-child(3){left:80%;animation-delay:8s}
+
+@keyframes smoke{
+0%{transform:translateY(0) rotate(0deg);}
+100%{transform:translateY(-1300px) rotate(360deg);}
+}
+
+/* NAV MEJORADO */
+nav {
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+border-bottom:1px solid rgba(255, 94, 58, 0.2);
+background:rgba(5,5,5,0.85);
+backdrop-filter: blur(12px);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.logo {
+font-size:1.4rem;
+font-weight:900;
+color:var(--blanco-puro);
+letter-spacing: 2px;
+}
+
+.logo span {
+color: var(--salmon-neon);
+text-shadow: 0 0 15px var(--salmon-neon);
+}
+
+.nav-links a {
+color:#a0a5ad;
+text-decoration:none;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-left:30px;
+transition:.3s;
+position: relative;
+}
+
+.nav-links a:hover {
+color:#fff;
+text-shadow: 0 0 8px var(--salmon-neon);
+}
+
+/* HERO ESTRUCTURADO */
+.hero {
+display:grid;
+grid-template-columns: 1fr 1.2fr;
+align-items:center;
+padding: 80px 8%;
+gap: 50px;
+min-height: 80vh;
+}
+
+/* --- NUEVA LLAMA CIBERNÉTICA FLOTANTE --- */
+.flame-wrapper {
+position: relative;
+width: 100%;
+height: 400px;
+display: flex;
+justify-content: center;
+align-items: center;
+animation: floatHero 5s ease-in-out infinite; /* Tu animación de levitación */
+}
+
+@keyframes floatHero {
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-25px)}
+}
+
+.cyber-flame {
+position: relative;
+width: 160px;
+height: 160px;
+background: linear-gradient(-45deg, var(--salmon-neon), var(--fuego-oro));
+border-radius: 0 100% 100% 100%;
+transform: rotate(135deg);
+box-shadow: 
+    0px 0px 40px var(--salmon-glow),
+    0px 0px 80px rgba(255, 94, 58, 0.5),
+    inset -8px 8px 25px rgba(255,255,255,0.4);
+animation: burnFlame 1s ease-in-out infinite alternate;
+filter: blur(1px);
+}
+
+/* Núcleo de energía de la llama */
+.cyber-flame::after {
+content: '';
+position: absolute;
+top: 22%; left: 22%;
+width: 55%; height: 55%;
+background: linear-gradient(-45deg, #ffffff, var(--fuego-oro));
+border-radius: 0 100% 100% 100%;
+box-shadow: 0 0 15px #ffffff;
+}
+
+/* Aura térmica de fondo */
+.flame-aura {
+position: absolute;
+width: 280px;
+height: 280px;
+background: radial-gradient(circle, rgba(255, 94, 58, 0.2) 0%, transparent 70%);
+filter: blur(25px);
+z-index: -1;
+}
+
+@keyframes burnFlame {
+0% { transform: rotate(135deg) scale(0.98) skewX(0deg); border-radius: 0 100% 100% 100%; }
+50% { transform: rotate(132deg) scale(1.04) skewX(-3deg); border-radius: 8% 92% 100% 92%; }
+100% { transform: rotate(137deg) scale(0.96) skewX(3deg); border-radius: 0% 100% 90% 100%; }
+}
+
+/* TEXTOS */
+.hero-text h1 {
+font-size: 2.8rem;
+border-left: 5px solid var(--salmon-neon);
+padding-left: 20px;
+line-height: 1.2;
+font-weight: 900;
+}
+
+.hero-text p {
+font-family: 'Inter', sans-serif;
+color: #b3b3b3;
+font-size: 16px;
+line-height: 1.6;
+margin-bottom: 30px;
+}
+
+/* BOTON INDUSTRIAL */
+.btn-cyber {
+background: var(--salmon-neon);
+color: var(--black);
+font-family: 'Orbitron', sans-serif;
+font-weight: 900;
+border: none;
+letter-spacing: 1px;
+padding: 18px 45px;
+cursor: pointer;
+transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+box-shadow: 0 8px 25px rgba(255, 94, 58, 0.3);
+}
+
+.btn-cyber:hover {
+background: #fff;
+color: var(--black);
+box-shadow: 0 0 35px rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
+
+/* TARJETAS HEXAGONALES DE SERVICIO */
+.services {
+display:flex;
+justify-content:center;
+gap:30px;
+padding: 80px 5%;
+flex-wrap:wrap;
+background: rgba(5,5,5,0.4);
+}
+
+.hex-card {
+width:260px;
+padding:45px 20px;
+background: var(--metal-panel);
+text-align:center;
+clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);
+border:1px solid rgba(255, 94, 58, 0.15);
+transition:.3s ease-out;
+}
+
+.hex-card:hover {
+border-color: var(--salmon-neon);
+transform: scale(1.05) translateY(-5px);
+box-shadow: 0 0 30px var(--salmon-glow);
+}
+
+.hex-card i {
+font-size:2.2rem;
+color: var(--salmon-neon);
+text-shadow: 0 0 10px var(--salmon-glow);
+margin-bottom: 10px;
+}
+
+.hex-card h3 {
+font-size: 16px;
+letter-spacing: 1px;
+margin: 15px 0 8px 0;
+}
+
+.hex-card p {
+font-family: 'Inter', sans-serif;
+font-size: 13px;
+color: #999;
+}
+
+/* PASARELA DE PAGOS EN FORMATO HUD */
+.payments-hud {
+margin: 20px 8% 60px 8%;
+padding: 35px;
+background: linear-gradient(135deg, #111116, #09090c);
+border: 1px dashed rgba(255, 94, 58, 0.3);
+border-radius: 8px;
+text-align: center;
+}
+
+.payments-hud p {
+font-size: 14px;
+letter-spacing: 1px;
+color: #a0a5ad;
+margin-bottom: 25px;
+}
+
+.pay-flex {
+display: flex;
+justify-content: center;
+gap: 30px;
+flex-wrap: wrap;
+}
+
+.pay-box {
+padding: 12px 35px;
+font-weight: 900;
+font-size: 16px;
+border-radius: 4px;
+letter-spacing: 1px;
+}
+
+.pse-style {
+background: #ffffff;
+color: #1e2c54;
+border: 2px solid #ffaa00;
+}
+
+.nequi-style {
+background: #23003a;
+color: #ff007f;
+border: 1px solid rgba(255, 0, 127, 0.2);
+}
+
+/* CONTACTO HUD OPTIMIZADO */
+.contact-hud {
+margin:60px 8%;
+padding:40px;
+border:1px solid rgba(255, 94, 58, 0.2);
+background: var(--metal-panel);
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-radius:0 40px 0 40px;
+box-shadow: inset 0 0 20px rgba(255,94,58,0.05);
+}
+
+.contact-info h3 { letter-spacing: 2px; color: var(--salmon-neon); margin-bottom: 15px;}
+.contact-info p { font-family: 'Inter', sans-serif; color: #ccc; margin: 5px 0; font-size: 15px;}
+
+/* RESPONSIVO */
+@media (max-width: 868px) {
+.hero { grid-template-columns: 1fr; text-align: center; padding-top: 50px; }
+.hero-text h1 { border-left: none; padding-left: 0; }
+.flame-wrapper { order: -1; height: 300px; }
+.contact-hud { flex-direction: column; text-align: center; gap: 25px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="metal-bg"></div>
+
+<div class="molecules">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="smoke">
+<span></span><span></span><span></span>
+</div>
+
+<nav>
+<div class="logo">
+<i class="fas fa-bolt" style="color: var(--salmon-neon);"></i> VULCAN<span>BOG</span>
+</div>
+
+<div class="nav-links">
+<a href="#servicios">Servicio</a>
+<a href="#pagos">Ayuda</a>
+<a href="#contacto">Contacto</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="flame-wrapper">
+<div class="flame-aura"></div>
+<div class="cyber-flame"></div>
+</div>
+
+<div class="hero-text">
+<h1>VENTA Y RECARGA<br>
+<span style="color:var(--salmon-neon);">DE EXTINTORES EN BOGOTÁ</span></h1>
+
+<p>Blindamos tu negocio u hogar contra contingencias bajo estándares técnicos estrictos. Ingeniería de prevención inmediata con entrega certificada y rápida en toda la capital.</p>
+
+<button class="btn-cyber" onclick="window.location.href='#contacto'">
+¡SOLICITAR ATENCIÓN URGENTE!
+</button>
+</div>
+</section>
+
+<section class="services" id="servicios">
+<div class="hex-card">
+<i class="fas fa-fire-extinguisher"></i>
+<h3>Venta Directa</h3>
+<p>Equipos nuevos de alta presión de agentes PQS, CO2 y Solkaflam.</p>
+</div>
+
+<div class="hex-card">
+<i class="fas fa-sync-alt"></i>
+<h3>Recarga Express</h3>
+<p>Mantenimiento normativo con laboratorios y pruebas hidrostáticas certificadas.</p>
+</div>
+
+<div class="hex-card">
+<i class="fas fa-shield-alt"></i>
+<h3>Inspección</h3>
+<p>Garantía de cumplimiento completo para visitas de Bomberos Bogotá.</p>
+</div>
+</section>
+
+<section class="payments-hud" id="pagos">
+<p><i class="fas fa-lock" style="color: var(--salmon-neon);"></i> MÓDULO DE LIQUIDACIÓN Y PAGOS DIGITALES SEGUROS</p>
+<div class="pay-flex">
+<div class="pay-box pse-style">PSE Pagos</div>
+<div class="pay-box nequi-style">Nequi</div>
+</div>
+</section>
+
+<div class="contact-hud" id="contacto">
+<div class="contact-info">
+<h3>CENTRO DE CONTROL INDUSTRIAL</h3>
+<p><i class="fas fa-map-marker-alt" style="color: var(--salmon-neon);"></i> Cobertura Logística Completa - Bogotá D.C.</p>
+<p><i class="fas fa-phone-alt" style="color: var(--salmon-neon);"></i> Despachos Corporativos: +57 300 000 0000</p>
+</div>
+<button class="btn-cyber" style="padding: 12px 30px; font-size: 12px;">Abrir Canales</button>
+</div>
+
+</body>
+</html>
